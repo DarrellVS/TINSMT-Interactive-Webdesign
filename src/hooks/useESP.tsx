@@ -21,6 +21,7 @@ export default function useESP() {
       console.log("ws opened");
       setWs(ws);
     };
+    
     ws.onclose = () => {
       console.log("ws closed");
       setWs(undefined);
@@ -29,6 +30,8 @@ export default function useESP() {
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
       setEsp(data);
+      console.log(data);
+      
     };
 
     return () => {

@@ -138,7 +138,7 @@ void loop() {
   if (millis() % 50 == 0) {
     float newPotValue = analogRead(A0);
 
-    if(newPotValue != potValue) {
+    if(abs(newPotValue - potValue) > 3) {
       potValue = newPotValue;
       updateClients();
     }

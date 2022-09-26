@@ -1,4 +1,13 @@
-import { ChakraProvider, theme, Flex, Button, Slider, SliderTrack, SliderFilledTrack } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  theme,
+  Flex,
+  Button,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import useESP from "./hooks/useESP";
 import { LEDColors } from "./types/ESP";
 
@@ -25,7 +34,13 @@ function PotValue() {
   const { esp } = useESP();
 
   return (
-    <Slider aria-label="slider-ex-1" value={esp.potentioMeter} min={0} max={1024} step={1}>
+    <Slider
+      aria-label="slider"
+      value={esp.potentioMeter}
+      min={0}
+      max={1023}
+      step={1}
+    >
       <SliderTrack>
         <SliderFilledTrack />
       </SliderTrack>
