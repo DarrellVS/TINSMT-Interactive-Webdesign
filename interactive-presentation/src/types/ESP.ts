@@ -17,5 +17,6 @@ export interface ESP {
 
 export type ESPContextType = {
   esp?: ESP;
+  setIp: (ip: string) => void;
   setLEDState: (led: LEDColors, state: boolean) => void;
 };
