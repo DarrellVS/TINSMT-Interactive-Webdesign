@@ -7,9 +7,8 @@ type LEDS = {
 export type LEDColors = keyof LEDS;
 
 export interface ESP {
-  potentioMeter?: number;
-  temperature?: number;
-  humidity?: number;
+  potentioMeter: number;
+  servo: number;
   LEDStates: {
     [color in LEDColors]: boolean;
   };
@@ -17,6 +16,8 @@ export interface ESP {
 
 export type ESPContextType = {
   esp?: ESP;
+  ip: string;
   setIp: (ip: string) => void;
   setLEDState: (led: LEDColors, state: boolean) => void;
+  setServoPosition: (position: number) => void;
 };

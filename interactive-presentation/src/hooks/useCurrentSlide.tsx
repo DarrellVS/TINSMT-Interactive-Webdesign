@@ -17,6 +17,8 @@ import HooksPageFive from "../pages/Hooks/PageFive";
 import ExamplePageOne from "../pages/Example/PageOne";
 import ComponentsPageOne from "../pages/Components/PageOne";
 import ExamplePageTwo from "../pages/Example/PageTwo";
+import ApplicationsPageOne from "../pages/ApplicationsInProject/PageOne";
+import ApplicationsPageTwo from "../pages/ApplicationsInProject/PageTwo";
 
 export default function useCurrentSlide() {
   const [currentSlideIndex, setCurrentSlide] = useState(0);
@@ -40,6 +42,8 @@ export default function useCurrentSlide() {
     <HooksPageFive />,
     <ExamplePageOne />,
     <ExamplePageTwo />,
+    <ApplicationsPageOne />,
+    <ApplicationsPageTwo />,
   ];
 
   useEffect(() => {

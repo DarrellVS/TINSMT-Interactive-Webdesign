@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import {
   createContext,
   ReactNode,
@@ -15,14 +16,17 @@ function unimplementedFunction() {
 // Create a context with default values
 const ESPContext = createContext<ESPContextType>({
   esp: undefined,
+  ip: "",
   setIp: unimplementedFunction,
   setLEDState: unimplementedFunction,
+  setServoPosition: unimplementedFunction,
 });
 
 export default function ESPProvider({ children }: { children: ReactNode }) {
   const [esp, setEsp] = useState<ESP>();
   const [ip, setIp] = useState<string>("192.168.178.172");
   const [ws, setWs] = useState<WebSocket>();
+  const toast = useToast();
 
   // Log when ip changes
   useEffect(() => {
@@ -32,28 +36,42 @@ export default function ESPProvider({ children }: { children: ReactNode }) {
   // Connect to websocket ip changes
   // Reconnect when ip changes
   useEffect(() => {
+    console.log("Connecting to websocket");
+
     const ws = new WebSocket(`ws://${ip}:81`);
     ws.onopen = () => {
-      console.log("ws opened");
+      console.log("ESP WebSocket opened");
       setWs(ws);
+      toast({
+        title: "ESP WebSocket opened",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     };
 
     ws.onclose = () => {
-      console.log("ws closed");
+      console.log("ESP WebSocket closed");
       setWs(undefined);
+      toast({
+        title: "ESP WebSocket closed",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     };
 
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
       setEsp(data);
-      console.log("ESP Message", data);
+      console.log(data);
     };
 
     // Close websocket on unmount
     return () => {
       ws.close();
     };
-  }, [ip]);
+  }, [ip, toast]);
 
   // Set LED state on ESP by sending a message to the websocket
   const setLEDState = useCallback(
@@ -64,8 +82,18 @@ export default function ESPProvider({ children }: { children: ReactNode }) {
     [ws]
   );
 
+  const setServoPosition = useCallback(
+    (position: number) => {
+      if (!ws) throw Error("ESP not connected");
+      ws.send(JSON.stringify({ action: "setServoPos", position }));
+    },
+    [ws]
+  );
+
   return (
-    <ESPContext.Provider value={{ esp, setIp, setLEDState }}>
+    <ESPContext.Provider
+      value={{ esp, ip, setIp, setLEDState, setServoPosition }}
+    >
       {children}
     </ESPContext.Provider>
   );

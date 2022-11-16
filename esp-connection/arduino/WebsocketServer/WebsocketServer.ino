@@ -4,18 +4,22 @@
 #include <ESP8266WiFiMulti.h>
 #include <WebSocketsServer.h>
 #include <Hash.h>
+#include <Servo.h>
 
 ESP8266WiFiMulti WiFiMulti;
+Servo servo;
 
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 int rPin = 12;
-int gPin = 14;
-int bPin = 13;
+int gPin = 13;
+int bPin = 14;
 
 boolean rLEDState = false;
 boolean gLEDState = false;
 boolean bLEDState = false;
+
+int servoPos = 0;
 
 float temperature = 20.0;
 float humidity = 20.0;
@@ -36,8 +40,7 @@ String getSystemState() {
   StaticJsonDocument<512> doc;
 
   doc["potentioMeter"] = potValue;
-  doc["temperature"] = temperature;
-  doc["humidity"] = humidity;
+  doc["servo"] = servoPos;
   
   JsonObject LEDStates = doc.createNestedObject("LEDStates");
   LEDStates["red"] = rLEDState;
@@ -67,7 +70,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     case WStype_TEXT:
       Serial.printf("[%u] get Text: %s\n", num, payload);
 
-      StaticJsonDocument<48> doc;
+      StaticJsonDocument<128> doc;
       DeserializationError error = deserializeJson(doc, payload, length);
       
       if (error) {
@@ -76,11 +79,13 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         return;
       }
       
-      const char* action = doc["action"]; // "setLEDState"
+      const char* action = doc["action"];
+
+      Serial.println(action);
       
       if(strcmp(action, "setLEDState") == 0) {        
-        const char* color = doc["color"]; // "green"
-        bool state = doc["state"]; // true
+        const char* color = doc["color"];
+        bool state = doc["state"];
 
         if(strcmp(color, "red") == 0) {
           rLEDState = state;  
@@ -93,6 +98,14 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         if(strcmp(color, "blue") == 0) {
           bLEDState = state;  
         }
+      }
+
+      if(strcmp(action, "setServoPos") == 0) {
+        const int pos = doc["position"];
+        Serial.println(pos);
+        if(pos < 0 || pos > 90) return;
+        servoPos = pos;
+        servo.write(servoPos);
       }
       
       updateInternalState();
@@ -108,6 +121,8 @@ void setup() {
   pinMode(gPin, OUTPUT);
   pinMode(bPin, OUTPUT);
   pinMode(A0, INPUT);
+  servo.attach(2);
+  servo.write(servoPos);
   updateInternalState();
 
   Serial.setDebugOutput(true);
@@ -136,6 +151,7 @@ void loop() {
   webSocket.loop();
 
   if (millis() % 50 == 0) {
+//    servo.write(servoPos);
     float newPotValue = analogRead(A0);
 
     if(abs(newPotValue - potValue) > 3) {
