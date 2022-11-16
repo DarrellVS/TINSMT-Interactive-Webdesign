@@ -10,12 +10,12 @@ export default function StructurePageOne() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Structuur
         </Heading>
         <Text mt=".5rem" mb="3rem">
           React kan geschreven worden in een HTML-achtige structuur. Het kan
-          zelfs gebruikt worden met exact dezelfde syntax als HTML.
+          zelfs gebruikt worden met exact dezelfde elementen als HTML.
         </Text>
 
         <div>

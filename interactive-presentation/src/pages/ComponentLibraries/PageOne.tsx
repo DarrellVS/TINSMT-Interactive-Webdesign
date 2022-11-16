@@ -10,7 +10,7 @@ export default function ComponentLibrariesPageOne() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Component libraries
         </Heading>
         <Text mt=".5rem">

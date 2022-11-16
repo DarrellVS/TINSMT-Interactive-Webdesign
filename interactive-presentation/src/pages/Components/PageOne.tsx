@@ -10,7 +10,7 @@ export default function ComponentsPageOne() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Syntax (schrijfwijze)
         </Heading>
         <Text mt=".5rem">
@@ -19,7 +19,7 @@ export default function ComponentsPageOne() {
         </Text>
 
         <Box mt="3rem">
-          <Heading mt="1rem" fontSize="2xl">
+          <Heading mt="1rem" size="2xl">
             Soorten componenten
           </Heading>
 

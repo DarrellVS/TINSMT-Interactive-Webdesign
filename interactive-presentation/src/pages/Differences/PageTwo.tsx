@@ -11,7 +11,7 @@ export default function DifferencesPageTwo() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Stateful Development
         </Heading>
         <Text mt=".5rem">

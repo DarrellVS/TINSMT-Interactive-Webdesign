@@ -12,7 +12,7 @@ export default function ComponentLibrariesPageTwo() {
       </PageHeading>
 
       <AnimatedPageTransition>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           De code? Bijna hetzelfde!
         </Heading>
         <Box>

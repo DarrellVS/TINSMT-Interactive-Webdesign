@@ -21,7 +21,7 @@ export const theme = extendTheme({
     Text: {
       baseStyle: {
         color: BodyColor,
-        fontSize: "20px",
+        fontSize: "26px",
         fontWeight: "400",
       },
     },
@@ -54,7 +54,7 @@ export const theme = extendTheme({
           lineHeight: "68px",
         },
         "4xl": {
-          fontSize: "72px",
+          fontSize: "82px",
           fontWeight: "extrabold",
           lineHeight: "80px",
         },

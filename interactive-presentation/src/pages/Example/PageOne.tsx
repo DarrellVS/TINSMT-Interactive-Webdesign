@@ -8,7 +8,7 @@ export default function ExamplePageOne() {
       <PageHeading query="Samen">Nu samen.</PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Een simpel projectje
         </Heading>
         <Text mt=".5rem">
@@ -18,7 +18,7 @@ export default function ExamplePageOne() {
         </Text>
 
         <Box mt="3rem">
-          <Heading mt="1rem" fontSize="2xl">
+          <Heading mt="1rem" size="2xl">
             Hint: bouw eerst de structuur
           </Heading>
 

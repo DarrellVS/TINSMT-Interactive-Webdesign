@@ -11,7 +11,7 @@ export default function AboutStatesPageTwo() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl" mb="2rem">
+        <Heading mt="1rem" size="2xl" mb="2rem">
           Een state kan meer dan alleen een getal zijn
         </Heading>
         <ExampleList />

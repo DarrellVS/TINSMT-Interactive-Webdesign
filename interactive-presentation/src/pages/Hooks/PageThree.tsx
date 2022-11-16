@@ -27,7 +27,7 @@ export default function HooksPageThree() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Voorbeeldje!
         </Heading>
         <Image src="/images/important hooks.png" rounded="7.5px" mt="1rem" />

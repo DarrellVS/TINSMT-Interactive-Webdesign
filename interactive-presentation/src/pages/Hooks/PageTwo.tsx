@@ -8,7 +8,7 @@ export default function HooksPageTwo() {
       <PageHeading query="hooks">Dat zijn best veel hooks.</PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           En daar houdt het nog niet op
         </Heading>
         <Text mt=".5rem">

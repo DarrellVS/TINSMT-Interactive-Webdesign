@@ -1,5 +1,5 @@
-import { Grid, GridProps } from "@chakra-ui/react";
-import React, { ReactNode } from "react";
+import { Grid, Text, GridProps } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
 export default function CustomListItem({
   children,
@@ -10,12 +10,12 @@ export default function CustomListItem({
     <Grid
       alignItems="center"
       templateColumns="2.5rem 1fr"
-      fontSize="xl"
+      fontSize="2xl"
       color="gray.700"
       {...rest}
     >
       {icon}
-      {children}
+      <Text>{children}</Text>
     </Grid>
   );
 }

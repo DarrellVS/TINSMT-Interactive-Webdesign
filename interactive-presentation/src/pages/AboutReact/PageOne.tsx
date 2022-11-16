@@ -16,7 +16,7 @@ export default function AboutReact() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Wat is React?
         </Heading>
 
@@ -37,10 +37,10 @@ export default function AboutReact() {
             position="absolute"
             src="/images/arrow_down_left_curve.png"
             h="60%"
-            top="15px"
-            left="-45px"
+            top="25px"
+            left="-55px"
           />
-          <Heading>Component</Heading>
+          <Heading size="2xl">Component</Heading>
           <ExampleComponent />
         </Grid>
       </Box>

@@ -34,7 +34,9 @@ export default function ExampleList() {
         <Input value={inputValue} onChange={onInputValueChange} />
 
         {/* De knop om de string aan de array toe te voegen */}
-        <Button onClick={addItem}>Add</Button>
+        <Button onClick={addItem} colorScheme="blue">
+          Add
+        </Button>
       </Grid>
 
       {/* De lijst met strings */}

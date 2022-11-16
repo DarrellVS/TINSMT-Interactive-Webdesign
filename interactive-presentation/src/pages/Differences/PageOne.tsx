@@ -1,4 +1,4 @@
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Image, Heading } from "@chakra-ui/react";
 import ExampleComponent from "../../components/ExampleComponents/Counter";
 import PageHeading from "../../components/PageHeading";
 import SlideWrapper from "../../components/SlideWrapper";
@@ -9,7 +9,7 @@ export default function DifferencesPageOne() {
       <PageHeading query="html">Wat maakt React anders dan HTML?</PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Custom Components
         </Heading>
         <Text mt=".5rem">
@@ -19,7 +19,13 @@ export default function DifferencesPageOne() {
         </Text>
 
         <Box position="relative" mt="3rem">
-          <Heading fontSize="2xl">Herbruikbare code</Heading>
+          <Heading size="2xl">Herbruikbare code</Heading>
+          <Image
+            src="/images/arrow_looping_down_left.png"
+            position="absolute"
+            left="160px"
+            top="80px"
+          />
           <Box
             position="absolute"
             _after={{
@@ -34,7 +40,7 @@ export default function DifferencesPageOne() {
               pointerEvents: "none",
             }}
           >
-            {Array.from(Array(8)).map((x, i) => (
+            {Array.from(Array(7)).map((x, i) => (
               <ExampleComponent key={i} />
             ))}
           </Box>

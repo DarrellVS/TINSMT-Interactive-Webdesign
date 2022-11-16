@@ -11,7 +11,7 @@ export default function ApplicationsPageTwo() {
       <PageHeading query="kennis">Wat kan ik met deze kennis?</PageHeading>
 
       <AnimatedPageTransition>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Koppelen aan hardware
         </Heading>
         <ESPReflector mt="2rem" />

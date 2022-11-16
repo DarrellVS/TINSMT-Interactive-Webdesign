@@ -14,7 +14,7 @@ export default function HooksPageOne() {
       </PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Hooks
         </Heading>
         <Text mt=".5rem">
@@ -27,7 +27,7 @@ export default function HooksPageOne() {
           components zijn components welke reageren op veranderende data.
         </Text>
 
-        <Heading mt="3rem" fontSize="2xl">
+        <Heading mt="3rem" size="2xl">
           Bestaan er nog meer hooks?
         </Heading>
         <Text mt=".5rem">Ja! Er bestaan nog veel meer hooks, zoals</Text>

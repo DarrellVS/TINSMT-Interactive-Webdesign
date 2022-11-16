@@ -8,7 +8,7 @@ export default function ApplicationsPageOne() {
       <PageHeading query="kennis">Wat kan ik met deze kennis?</PageHeading>
 
       <Box>
-        <Heading mt="1rem" fontSize="2xl">
+        <Heading mt="1rem" size="2xl">
           Gebruik het in je eigen projecten!
         </Heading>
         <Text mt=".5rem">
