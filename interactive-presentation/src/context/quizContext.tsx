@@ -30,7 +30,7 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     console.log("Connecting to websocket server");
-    const socket = io("http://192.168.178.28:8000", {
+    const socket = io("http://localhost:8000", {
       query: {
         api_key: "NietDezeKeer",
       },
