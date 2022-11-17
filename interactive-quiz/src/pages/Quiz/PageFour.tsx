@@ -19,7 +19,7 @@ export default function QuizPageFour() {
       <PageHeading query="quiz">OPGELET HET IS QUIZ TIJD</PageHeading>
 
       <AnimatedPageTransition>
-        <Heading mt="1rem" size="2xl">
+        <Heading mt="1rem" size={{ base: "lg", md: "2xl" }}>
           Welk codefragment is <BlueHighlight>het beste</BlueHighlight> wanneer
           ik conditioneel wil renderen?
         </Heading>

@@ -21,7 +21,7 @@ export default function QuizPageOne() {
       <PageHeading query="quiz">OPGELET HET IS QUIZ TIJD</PageHeading>
 
       <AnimatedPageTransition>
-        <Heading mt="1rem" size="2xl">
+        <Heading mt="1rem" size={{ base: "lg", md: "2xl" }}>
           Wat is <BlueHighlight>vereiste</BlueHighlight> voor een component?
         </Heading>
 

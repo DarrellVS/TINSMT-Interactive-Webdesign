@@ -9,7 +9,7 @@ export default function PageHeading({
   query: string;
 }) {
   return (
-    <Box alignSelf="center">
+    <Box alignSelf="center" display={{ base: "none", md: "block" }}>
       <Heading size="4xl">
         <BlueHighlight query={query}>{children}</BlueHighlight>
       </Heading>

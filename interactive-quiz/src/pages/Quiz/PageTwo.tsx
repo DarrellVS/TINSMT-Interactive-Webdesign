@@ -19,7 +19,7 @@ export default function QuizPageTwo() {
       <PageHeading query="quiz">OPGELET HET IS QUIZ TIJD</PageHeading>
 
       <AnimatedPageTransition>
-        <Heading mt="1rem" size="2xl">
+        <Heading mt="1rem" size={{ base: "lg", md: "2xl" }}>
           Welke <BlueHighlight>hook</BlueHighlight> reageert op veranderingen
           van een state?
         </Heading>
