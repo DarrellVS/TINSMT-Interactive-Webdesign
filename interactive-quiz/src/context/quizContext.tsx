@@ -70,6 +70,24 @@ export default function QuizProvider({
     };
   }, [setCurrentSlide, toast]);
 
+  // Listen for ctrl r keypress
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.altKey && event.key === "r") {
+        event.preventDefault();
+        console.log("Resetting answers");
+        setAnswers([]);
+        setServerAnswers([]);
+        localStorage.removeItem("answers");
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const addAnswer = (answer: Answer) => {
     setAnswers((prev) => [...prev, answer]);
     localStorage.setItem("answers", JSON.stringify([...answers, answer]));
