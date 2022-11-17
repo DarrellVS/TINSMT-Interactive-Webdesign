@@ -1,7 +1,7 @@
-import { useToast } from "@chakra-ui/react";
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -18,6 +18,7 @@ const QuizContext = createContext<QuizContextType>({
   getAnswer: () => undefined,
   addAnswer: unimplementedFunction,
   useIsAnswered: () => true,
+  finishedQuestion: unimplementedFunction,
 });
 
 export default function QuizProvider({
@@ -28,7 +29,6 @@ export default function QuizProvider({
   setCurrentSlide: (index: number) => void;
 }) {
   const [webSocket, setWebSocket] = useState<any>();
-  const toast = useToast();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [serverAnswers, setServerAnswers] = useState<Answer[]>([]);
 
@@ -46,12 +46,6 @@ export default function QuizProvider({
     socket.on("connect", () => {
       console.log("Connected to websocket server");
       setWebSocket(socket);
-      toast({
-        title: "Connected to websocket server",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
     });
 
     socket.on("syncQuestionIndex", (index: number) => {
@@ -68,12 +62,12 @@ export default function QuizProvider({
     return () => {
       socket.close();
     };
-  }, [setCurrentSlide, toast]);
+  }, [setCurrentSlide]);
 
-  // Listen for ctrl r keypress
+  // Listen for ctrl p keypress
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.altKey && event.key === "r") {
+      if (event.ctrlKey && event.key === "p") {
         event.preventDefault();
         console.log("Resetting answers");
         setAnswers([]);
@@ -110,8 +104,16 @@ export default function QuizProvider({
     };
   };
 
+  const finishedQuestion = useCallback(() => {
+    if (webSocket) {
+      webSocket.emit("finishedQuestion");
+    }
+  }, [webSocket]);
+
   return (
-    <QuizContext.Provider value={{ addAnswer, useIsAnswered, getAnswer }}>
+    <QuizContext.Provider
+      value={{ addAnswer, useIsAnswered, getAnswer, finishedQuestion }}
+    >
       {children}
     </QuizContext.Provider>
   );

@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react";
+import { useQuiz } from "../context/quizContext";
 import { Answer } from "../types/quiz";
 
 export default function AnswerButton({
@@ -16,6 +17,7 @@ export default function AnswerButton({
     correctAnswer?: Answer;
   };
 }) {
+  const { finishedQuestion } = useQuiz();
   const { isReady, correctAnswer: { answer: correctAnswer } = { answer: "" } } =
     answer;
 
@@ -28,7 +30,9 @@ export default function AnswerButton({
   return (
     <Button
       onClick={() => {
-        if (!isReady) onClick();
+        if (isReady) return;
+        onClick();
+        finishedQuestion();
       }}
       colorScheme={colorScheme}
       size="lg"

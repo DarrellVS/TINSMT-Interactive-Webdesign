@@ -8,6 +8,7 @@ import Footnote from "../../components/FootNote";
 import BlueHighlight from "../../components/BlueHighlight";
 import { useQuiz } from "../../context/quizContext";
 import { useEffect } from "react";
+import QuizStats from "../../components/QuizStats";
 
 export default function QuizPageFive() {
   const { syncQuestionIndex, displayAnswer } = useQuiz();
@@ -16,29 +17,32 @@ export default function QuizPageFive() {
   }, [syncQuestionIndex]);
 
   return (
-    <Layout>
-      <Box alignSelf="center">
-        <PageHeading query="quiz">OPGELET HET IS QUIZ TIJD</PageHeading>
-        <Button mt="2rem" colorScheme="blue" onClick={() => displayAnswer(4)}>
-          Antwoord
-        </Button>
-      </Box>
+    <>
+      <Layout>
+        <Box alignSelf="center">
+          <PageHeading query="quiz">OPGELET HET IS QUIZ TIJD</PageHeading>
+          <Button mt="2rem" colorScheme="blue" onClick={() => displayAnswer(4)}>
+            Antwoord
+          </Button>
+        </Box>
 
-      <AnimatedPageTransition>
-        <Heading mt="1rem" size="2xl">
-          Wanneer ik een list render met <BlueHighlight>map()</BlueHighlight>{" "}
-          moet ik een bepaald argument meegeven aan de children.
-        </Heading>
+        <AnimatedPageTransition>
+          <Heading mt="1rem" size="2xl">
+            Wanneer ik een list render met <BlueHighlight>map()</BlueHighlight>{" "}
+            moet ik een bepaald argument meegeven aan de children.
+          </Heading>
 
-        <CustomList spacing=".5rem" mt="1.5rem">
-          <CustomListItem icon={<Text>A</Text>}>index</CustomListItem>
-          <CustomListItem icon={<Text>B</Text>}>key</CustomListItem>
-          <CustomListItem icon={<Text>C</Text>}>seed</CustomListItem>
-          <CustomListItem icon={<Text>D</Text>}>item</CustomListItem>
-        </CustomList>
-      </AnimatedPageTransition>
+          <CustomList spacing=".5rem" mt="1.5rem">
+            <CustomListItem icon={<Text>A</Text>}>index</CustomListItem>
+            <CustomListItem icon={<Text>B</Text>}>key</CustomListItem>
+            <CustomListItem icon={<Text>C</Text>}>seed</CustomListItem>
+            <CustomListItem icon={<Text>D</Text>}>item</CustomListItem>
+          </CustomList>
+        </AnimatedPageTransition>
 
-      <Footnote />
-    </Layout>
+        <Footnote />
+      </Layout>
+      <QuizStats />
+    </>
   );
 }

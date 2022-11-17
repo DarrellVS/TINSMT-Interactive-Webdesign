@@ -18,4 +18,5 @@ export type QuizContextType = {
     | undefined;
   addAnswer: (answer: Answer) => void;
   useIsAnswered: (question: number) => boolean;
+  finishedQuestion: () => void;
 };

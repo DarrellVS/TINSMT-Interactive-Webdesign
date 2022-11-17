@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { io, Socket } from "socket.io-client";
-import { Quiz, QuizContextType } from "../types/quiz";
+import { QuizContextType } from "../types/quiz";
 
 function unimplementedFunction() {
   throw new Error("Function called before initialization");
@@ -16,16 +16,16 @@ function unimplementedFunction() {
 
 // Create a context with default values
 const QuizContext = createContext<QuizContextType>({
-  quiz: undefined,
   amountOfAnswers: 0,
+  amountConnected: 0,
   syncQuestionIndex: unimplementedFunction,
   displayAnswer: unimplementedFunction,
 });
 
 export default function QuizProvider({ children }: { children: ReactNode }) {
-  const [quiz, setQuiz] = useState<Quiz>();
   const [webSocket, setWebSocket] = useState<Socket>();
   const [amountOfAnswers, setAmountOfAnswers] = useState<number>(0);
+  const [amountConnected, setAmountConnected] = useState<number>(0);
   const toast = useToast();
 
   useEffect(() => {
@@ -50,6 +50,16 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
 
     socket.on("syncQuestionIndex", (index: number) => {
       console.log("Received new question index: " + index);
+    });
+
+    socket.on("amountOfAnswers", (amount: number) => {
+      console.log("Received new amount of answers: " + amount);
+      setAmountOfAnswers(amount);
+    });
+
+    socket.on("amountConnected", (amount: number) => {
+      console.log("Received new amount of connected users: " + amount);
+      setAmountConnected(amount);
     });
 
     // Close websocket on unmount
@@ -84,7 +94,12 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
 
   return (
     <QuizContext.Provider
-      value={{ quiz, amountOfAnswers, syncQuestionIndex, displayAnswer }}
+      value={{
+        amountOfAnswers,
+        amountConnected,
+        syncQuestionIndex,
+        displayAnswer,
+      }}
     >
       {children}
     </QuizContext.Provider>

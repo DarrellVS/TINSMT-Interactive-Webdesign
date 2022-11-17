@@ -9,16 +9,9 @@ export type Question = {
   answer: string;
 };
 
-export type Quiz = {
-  currentQuestion: number;
-  amountOfAnswers: number;
-  answers: Answer[];
-  questions: Question[];
-};
-
 export type QuizContextType = {
-  quiz?: Quiz;
   amountOfAnswers: number;
+  amountConnected: number;
   syncQuestionIndex: (index: number) => void;
   displayAnswer: (index: number) => void;
 };
