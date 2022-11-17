@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Layout from "./Layout";
-import Footnote from "./FootNote";
 
 export function AnimatedPageTransition({
   children,
@@ -25,7 +24,6 @@ export default function SlideWrapper({
       <AnimatedPageTransition>
         <Layout>{children}</Layout>
       </AnimatedPageTransition>
-      <Footnote />
     </>
   );
 }

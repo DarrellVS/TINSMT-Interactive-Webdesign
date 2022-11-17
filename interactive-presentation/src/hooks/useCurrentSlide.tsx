@@ -19,6 +19,11 @@ import ComponentsPageOne from "../pages/Components/PageOne";
 import ExamplePageTwo from "../pages/Example/PageTwo";
 import ApplicationsPageOne from "../pages/ApplicationsInProject/PageOne";
 import ApplicationsPageTwo from "../pages/ApplicationsInProject/PageTwo";
+import QuizPageOne from "../pages/Quiz/PageOne";
+import QuizPageTwo from "../pages/Quiz/PageTwo";
+import QuizPageThree from "../pages/Quiz/PageThree";
+import QuizPageFour from "../pages/Quiz/PageFour";
+import QuizPageFive from "../pages/Quiz/PageFive";
 
 export default function useCurrentSlide() {
   const [currentSlideIndex, setCurrentSlide] = useState(0);
@@ -44,6 +49,11 @@ export default function useCurrentSlide() {
     <ExamplePageTwo />,
     <ApplicationsPageOne />,
     <ApplicationsPageTwo />,
+    <QuizPageOne />,
+    <QuizPageTwo />,
+    <QuizPageThree />,
+    <QuizPageFour />,
+    <QuizPageFive />,
   ];
 
   useEffect(() => {
