@@ -20,4 +20,5 @@ export type ESPContextType = {
   setIp: (ip: string) => void;
   setLEDState: (led: LEDColors, state: boolean) => void;
   setServoPosition: (position: number) => void;
+  retryConnection: () => void;
 };

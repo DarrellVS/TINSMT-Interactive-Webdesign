@@ -20,12 +20,14 @@ const ESPContext = createContext<ESPContextType>({
   setIp: unimplementedFunction,
   setLEDState: unimplementedFunction,
   setServoPosition: unimplementedFunction,
+  retryConnection: unimplementedFunction,
 });
 
 export default function ESPProvider({ children }: { children: ReactNode }) {
   const [esp, setEsp] = useState<ESP>();
   const [ip, setIp] = useState<string>("192.168.178.172");
   const [ws, setWs] = useState<WebSocket>();
+  const [trigger, setTrigger] = useState<boolean>(false);
   const toast = useToast();
 
   // Log when ip changes
@@ -37,6 +39,10 @@ export default function ESPProvider({ children }: { children: ReactNode }) {
   // Reconnect when ip changes
   useEffect(() => {
     console.log("Connecting to websocket");
+
+    if (trigger) {
+      setTrigger(false);
+    }
 
     const ws = new WebSocket(`ws://${ip}:81`);
     ws.onopen = () => {
@@ -71,7 +77,11 @@ export default function ESPProvider({ children }: { children: ReactNode }) {
     return () => {
       ws.close();
     };
-  }, [ip, toast]);
+  }, [ip, toast, trigger]);
+
+  const retryConnection = useCallback(() => {
+    setTrigger(true);
+  }, []);
 
   // Set LED state on ESP by sending a message to the websocket
   const setLEDState = useCallback(
@@ -92,7 +102,7 @@ export default function ESPProvider({ children }: { children: ReactNode }) {
 
   return (
     <ESPContext.Provider
-      value={{ esp, ip, setIp, setLEDState, setServoPosition }}
+      value={{ esp, ip, setIp, setLEDState, setServoPosition, retryConnection }}
     >
       {children}
     </ESPContext.Provider>

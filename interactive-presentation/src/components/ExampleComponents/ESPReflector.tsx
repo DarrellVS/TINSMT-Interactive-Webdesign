@@ -52,9 +52,15 @@ export default function ESPReflector({ ...rest }: BoxProps) {
             onChange={(e) => setIp(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && submitIp()}
           />
-          <Button colorScheme="blue" onClick={submitIp}>
-            Submit
-          </Button>
+          {esp.ip === ip ? (
+            <Button colorScheme="blue" onClick={esp.retryConnection}>
+              Retry
+            </Button>
+          ) : (
+            <Button colorScheme="blue" onClick={submitIp}>
+              Submit
+            </Button>
+          )}
         </Grid>
       </>
     );

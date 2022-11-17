@@ -17,15 +17,17 @@ export function AnimatedPageTransition({
 
 export default function SlideWrapper({
   children,
+  hideFootnote,
 }: {
   children: React.ReactNode;
+  hideFootnote?: boolean;
 }) {
   return (
     <>
       <AnimatedPageTransition>
         <Layout>{children}</Layout>
       </AnimatedPageTransition>
-      <Footnote />
+      {!hideFootnote && <Footnote />}
     </>
   );
 }

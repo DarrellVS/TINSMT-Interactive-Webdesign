@@ -41,7 +41,7 @@ export default function QuizProvider({
 
   useEffect(() => {
     console.log("Connecting to websocket server");
-    const socket = io(`http://${window.location.hostname}:8000`);
+    const socket = io(`https://quizws.darrellvs.nl`);
 
     socket.on("connect", () => {
       console.log("Connected to websocket server");
