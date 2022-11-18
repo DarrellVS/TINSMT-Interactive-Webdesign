@@ -3,7 +3,7 @@ import { useQuiz } from "../context/quizContext";
 import { Answer } from "../types/quiz";
 
 export default function AnswerButton({
-  children,
+  children: value,
   onClick,
   isDisabled,
   answer,
@@ -18,27 +18,32 @@ export default function AnswerButton({
   };
 }) {
   const { finishedQuestion } = useQuiz();
-  const { isReady, correctAnswer: { answer: correctAnswer } = { answer: "" } } =
-    answer;
+  const {
+    isReady,
+    correctAnswer: { answer: correctAnswer } = { answer: "" },
+    yourAnswer: { answer: yourAnswer } = { answer: "" },
+  } = answer;
 
   const colorScheme = !isReady
     ? "blue"
-    : children === correctAnswer
+    : value === correctAnswer
     ? "green"
-    : "red";
+    : value === yourAnswer
+    ? "red"
+    : "gray";
 
   return (
     <Button
       onClick={() => {
         if (isReady) return;
         onClick();
-        finishedQuestion();
+        finishedQuestion(value);
       }}
       colorScheme={colorScheme}
       size="lg"
       isDisabled={isDisabled && !isReady}
     >
-      {children}
+      {value}
     </Button>
   );
 }

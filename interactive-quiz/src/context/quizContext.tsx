@@ -104,11 +104,13 @@ export default function QuizProvider({
     };
   };
 
-  const finishedQuestion = useCallback(() => {
-    if (webSocket) {
-      webSocket.emit("finishedQuestion");
-    }
-  }, [webSocket]);
+  const finishedQuestion = useCallback(
+    (answer: string) => {
+      if (!webSocket) return;
+      webSocket.emit("finishedQuestion", answer);
+    },
+    [webSocket]
+  );
 
   return (
     <QuizContext.Provider
