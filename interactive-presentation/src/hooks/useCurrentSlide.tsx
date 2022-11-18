@@ -25,6 +25,9 @@ import QuizPageThree from "../pages/Quiz/PageThree";
 import QuizPageFour from "../pages/Quiz/PageFour";
 import QuizPageFive from "../pages/Quiz/PageFive";
 import QuestionsPageOne from "../pages/Questions/PageOne";
+import ConditionalRenderingPageOne from "../pages/ConditionalRendering/PageOne";
+import ConditionalRenderingPageTwo from "../pages/ConditionalRendering/PageTwo";
+import ConditionalRenderingPageThree from "../pages/ConditionalRendering/PageThree";
 
 export default function useCurrentSlide() {
   const [currentSlideIndex, setCurrentSlide] = useState(0);
@@ -46,6 +49,9 @@ export default function useCurrentSlide() {
     <HooksPageThree />,
     <HooksPageFour />,
     <HooksPageFive />,
+    <ConditionalRenderingPageOne />,
+    <ConditionalRenderingPageTwo />,
+    <ConditionalRenderingPageThree />,
     <ExamplePageOne />,
     <ExamplePageTwo />,
     <ApplicationsPageOne />,
