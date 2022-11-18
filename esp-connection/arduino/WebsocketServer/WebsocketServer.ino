@@ -137,7 +137,7 @@ void setup() {
     delay(1000);
   }
 
-  WiFiMulti.addAP("Net-Swinnie", "Wifi-01Cjdsa");
+  WiFiMulti.addAP("Tesla IoT", "fsL6HgjN");
 
   while (WiFiMulti.run() != WL_CONNECTED) {
     delay(100);
@@ -151,7 +151,6 @@ void loop() {
   webSocket.loop();
 
   if (millis() % 50 == 0) {
-//    servo.write(servoPos);
     float newPotValue = analogRead(A0);
 
     if(abs(newPotValue - potValue) > 3) {
