@@ -28,7 +28,6 @@ export default function ComponentLibrariesPageTwo() {
           />
         </Box>
       </AnimatedPageTransition>
-
       <FootNote />
     </Layout>
   );
