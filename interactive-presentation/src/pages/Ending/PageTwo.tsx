@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PageHeading from "../../components/PageHeading";
 import SlideWrapper from "../../components/SlideWrapper";
 
-export default function QuestionsPageOne() {
+export default function EndingPageTwo() {
   const container = {
     hidden: {},
     show: {

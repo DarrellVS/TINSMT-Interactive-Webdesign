@@ -9,7 +9,7 @@ export default function CustomListItem({
   return (
     <Grid
       alignItems="center"
-      templateColumns="2.5rem 1fr"
+      templateColumns={icon ? "2.5rem 1fr" : "auto"}
       fontSize="2xl"
       color="gray.700"
       {...rest}
