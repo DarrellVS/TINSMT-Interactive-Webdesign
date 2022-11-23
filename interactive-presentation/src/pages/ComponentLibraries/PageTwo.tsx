@@ -1,4 +1,4 @@
-import { Box, Heading, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, Link } from "@chakra-ui/react";
 import FootNote from "../../components/FootNote";
 import Layout from "../../components/Layout";
 import PageHeading from "../../components/PageHeading";
@@ -26,6 +26,18 @@ export default function ComponentLibrariesPageTwo() {
             src="/images/Text With Component Library.png"
             rounded="7.5px"
           />
+
+          <Box mt="2rem">
+            <Link href="https://chakra-ui.com/docs/components" target="_blank">
+              <Text
+                fontWeight="bold"
+                textDecoration="underline"
+                color="blue.400"
+              >
+                Alle Chakra Components
+              </Text>
+            </Link>
+          </Box>
         </Box>
       </AnimatedPageTransition>
       <FootNote />
